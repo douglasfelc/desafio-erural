@@ -25,10 +25,10 @@ Route::prefix('v1')->group(function() {
     Route::post('refresh', 'App\Http\Controllers\AuthController@refresh')->middleware('jwt.auth');
     Route::post('me', 'App\Http\Controllers\AuthController@me')->middleware('jwt.auth');
 
-    Route::apiResource('user', 'App\Http\Controllers\UserController')->middleware('jwt.auth');
-    Route::apiResource('video', 'App\Http\Controllers\VideoController')->middleware('jwt.auth');
+    Route::apiResource('user', 'App\Http\Controllers\UserController');
+    Route::apiResource('video', 'App\Http\Controllers\VideoController');
     Route::apiResource('video_comment', 'App\Http\Controllers\VideoCommentController')->middleware('jwt.auth');
-    Route::apiResource('video_room', 'App\Http\Controllers\VideoRoomController')->middleware('jwt.auth');
+    Route::apiResource('video_room', 'App\Http\Controllers\VideoRoomController');
     Route::apiResource('video_room_item', 'App\Http\Controllers\VideoRoomItemController')->middleware('jwt.auth');
     Route::apiResource('video_room_chat', 'App\Http\Controllers\VideoRoomChatController')->middleware('jwt.auth');
 });

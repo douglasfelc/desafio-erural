@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class VideoRoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth')->except('index', 'store');
+    }
     /**
      * Display a listing of the resource.
      *
