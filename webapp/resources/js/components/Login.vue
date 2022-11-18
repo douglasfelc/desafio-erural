@@ -77,12 +77,13 @@
                     .then(data => {
                         if(data.token) {
                             document.cookie = 'token='+data.token+';SameSite=Lax'
+
+                            window.open('/videos/', '_self')
                         }
-
-                        console.info(data);
-
-                        // submit form
-                        e.target.submit()
+                        
+                        if(data.error) {
+                            alert(data.error)
+                        }
                     })
             }
         }

@@ -2374,11 +2374,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (data) {
         if (data.token) {
           document.cookie = 'token=' + data.token + ';SameSite=Lax';
+          window.open('/videos/', '_self');
         }
-        console.info(data);
-
-        // submit form
-        e.target.submit();
+        if (data.error) {
+          alert(data.error);
+        }
       });
     }
   }
@@ -2477,13 +2477,17 @@ __webpack_require__.r(__webpack_exports__);
       fetch(url, config).then(function (response) {
         return response.json();
       }).then(function (data) {
+        console.info(data);
+        if (data.id) {
+          console.log('Registered successfully');
+          window.open('/login/', '_self');
+        } else {
+          alert('Error when registering');
+        }
         if (data.token) {
           document.cookie = 'token=' + data.token + ';SameSite=Lax';
+          window.open('/videos/', '_self');
         }
-        console.info(data);
-
-        // submit form
-        //e.target.submit()
       });
     }
   }

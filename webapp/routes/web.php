@@ -17,8 +17,6 @@ Route::get('/', function () {
     return redirect('/videos');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('videos', function() {
     return view('app.videos');
 })->name('videos');
@@ -31,16 +29,16 @@ Route::get('video-rooms', function() {
     return view('app.video-rooms');
 })->name('video-rooms');
 
-Route::get('video-room/{id}', function($id) {
+Auth::routes();
+
+Route::middleware('auth.cookie')->get('video-room/{id}', function($id) {
     return view('app.video-room', compact('id'));
 })->name('video-room');
 
-Auth::routes();
-
-Route::get('send-video', function() {
+Route::middleware('auth.cookie')->get('send-video', function() {
     return view('app.send-video');
 })->name('send-video');
 
-Route::get('create-video-room', function() {
+Route::middleware('auth.cookie')->get('create-video-room', function() {
     return view('app.create-video-room');
 })->name('create-video-room');

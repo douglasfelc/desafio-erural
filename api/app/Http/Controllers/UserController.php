@@ -30,7 +30,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return User::create($request->all());
+        return User::create(
+            array_merge(
+                $request->all(), 
+                ['password' => bcrypt($request->password)]
+            )
+        );
     }
 
     /**
@@ -54,7 +59,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return $user->update($request->all());
+        return $user->update(
+            array_merge(
+                $request->all(), 
+                ['password' => bcrypt($request->password)]
+            )
+        );
     }
 
     /**

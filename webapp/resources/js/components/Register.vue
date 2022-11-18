@@ -81,14 +81,20 @@
                 fetch(url, config)
                     .then(response => response.json())
                     .then(data => {
-                        if(data.token) {
-                            document.cookie = 'token='+data.token+';SameSite=Lax'
+                        console.info(data)
+
+                        if(data.id){
+                            console.log('Registered successfully')
+                            window.open('/login/', '_self')
+
+                        }else{
+                            alert('Error when registering')
                         }
 
-                        console.info(data);
-
-                        // submit form
-                        //e.target.submit()
+                        if(data.token) {
+                            document.cookie = 'token='+data.token+';SameSite=Lax'
+                            window.open('/videos/', '_self')
+                        }
                     })
             }
         }
