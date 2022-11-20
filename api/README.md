@@ -55,7 +55,13 @@ Access the container by running the command:
 docker exec -it api-laravel.test-1 bash
 ```
 
-When accessing the container, install the dependencies by running the command:
+When accessing the container, generate your application encryption key using:
+
+```
+php artisan key:generate
+```
+
+Install the dependencies by running the command:
 
 ```
 composer install

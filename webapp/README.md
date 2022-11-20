@@ -55,16 +55,20 @@ Access the container by running the command:
 docker exec -it webapp-laravel.test-1 bash
 ```
 
-When accessing the container, install the dependencies by running the command:
+When accessing the container, generate your application encryption key using:
+
+```
+php artisan key:generate
+```
+
+And install the dependencies by running the command:
 
 ```
 composer install
 ```
 
-And perform the migrations by running the command:
-
 ```
-php artisan migrate
+npm install
 ```
 
 Still inside the container, you can consult the list of routes using the command:
